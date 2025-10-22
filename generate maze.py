@@ -4,7 +4,8 @@ check = [1,0,-1,2]
 while True:
 
 	plant(Entities.Bush)
-	use_item(Items.Weird_Substance, 8)
+	substance = get_world_size() * 2**(num_unlocked(Unlocks.Mazes) - 1)
+	use_item(Items.Weird_Substance, substance)
 	has_treasure = False
 	heading = 1
 

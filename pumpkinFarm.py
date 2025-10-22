@@ -73,12 +73,6 @@ def farm(xy,xy2):
 		
 		harvest()
 
-
-
-
-
-
-
 	loop()
 
 

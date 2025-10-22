@@ -1,4 +1,4 @@
-def go_to(xy = (0,0)):
+def go_to(xy = (0,0), allowWrapping = True, callback = False):
 
 	x , y = xy
 	w = get_world_size()
@@ -13,17 +13,28 @@ def go_to(xy = (0,0)):
 	xDir = East
 	yDir = North
 
-	if((xDistance < 0 and xDistance > 0-halfW) or (xDistance > halfW and xDistance < w) ):
-		xDir = West
+	if(allowWrapping):
+		if((xDistance < 0 and xDistance > 0-halfW) or (xDistance > halfW and xDistance < w) ):
+			xDir = West
 
-	if((yDistance < 0 and yDistance > 0-halfW) or (yDistance > halfW and yDistance < w) ):
-		yDir = South
-
-	#print(yDir)
-	#print(xDir)
+		if((yDistance < 0 and yDistance > 0-halfW) or (yDistance > halfW and yDistance < w) ):
+			yDir = South
+	else:
+		if(cx > x):
+			xDir = West
+		if(cy > y):
+			yDir = South
 
 	while(get_pos_x() != x):
-		move(xDir)
+		moved = move(xDir)
+		if(moved == False):
+			return moved
+		if(callback != False):
+			callback()
 
 	while(get_pos_y() != y):
-		move(yDir)
+		moved =move(yDir)
+		if(moved == False):
+			return moved
+		if(callback != False):
+			callback()

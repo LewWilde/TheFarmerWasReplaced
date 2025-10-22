@@ -82,8 +82,8 @@ def farm(xy,xy2,entityList):
 		if(entity == Entities.Tree):
 			if(get_pos_x() % 2 != get_pos_y() % 2):
 				plant(entity)
-			#else: 
-				#plant(Entities.Bush)
+			else: 
+				plant(Entities.Bush)
 		else:
 			plant(entity)
 
